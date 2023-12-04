@@ -1,29 +1,27 @@
-document.getElementById("DOMContentLoaded", function () {
-    const fetchDataButton = document.getElementById("fetchDataButton");
+document.addEventListener('click', handleClick);
 
-    fetchDataButton.addEventListener("click", fetchData);
+function handleClick() {
+  fetchData().then(processData).catch(handleError);
+}
 
-    function fetchData() {
-        const jsonUrl = "https://github.com/alee016/BUMet.git";
+function fetchData() {
+  return fetch('main.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('HTTP error!' + error);
+      }
+      return response.json();
+    });
+}
 
-        fetch(jsonUrl)
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('HTTP error! Status: ' + response.status);
-                }
-                return response.json();
-            })
-            .then((data) => {
-                console.log("Fetched Data:", data);
-                data.degrees.forEach((degree) => {
-                    console.log(`Degree from ${degree.school}: ${degree.type} in ${degree.program}`);
+function processData(data) {
+  console.log('Degrees Information:', data);
+}
 
-                });
-            })
-            .catch((error) => {
-                console.error("Error fetching data:", error);
-            });
-    }
-});
+function handleError(error) {
+  console.error('Error fetching data:', error.message);
+}
+
+
 
 
