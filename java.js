@@ -19,7 +19,7 @@ function fetchData() {
 
 function processJSONData(data) {
     console.log('Processing data:', data);
-    document.getElementById('data').innerHTML
+  	document.getElementById("data").innerHTML = data.my_college_degrees;
 
 
 }
