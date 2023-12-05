@@ -18,8 +18,8 @@ function fetchData() {
 }
 
 function processJSONData(data) {
-    console.log('Processing data:', data);
-  	document.getElementById("data").innerHTML = data.my_college_degrees;
+    const dataDiv = document.getElementById("data");
+    dataDiv.innerhtml = "<h2>College Degrees:</h2><pre>" + JSON.stringify(data, null, 2) + "</pre>";
 
 
 }
