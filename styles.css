@@ -1,13 +1,17 @@
 button {
     font-size: 15px;
-    color: purple;
+    color: #6a5acd;
     border-radius: 8px;
 }
-
+button:hover {
+    background-color: lightgray;
+}
 body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 50px;
+    border-radius: auto;
+    background-color: whitesmoke;
 
 }
 
@@ -16,3 +20,25 @@ h1 {
 
 }
 
+.grad{
+    width:600px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 40px;
+}
+
+th,
+td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    background-color: #cfe4f3;
+    color:black;
+}
+
+th {
+    background-color: #375a80;
+    color:white;
+}
