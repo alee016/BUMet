@@ -21,10 +21,48 @@ function fetchData() {
 
 }
 
+
+
 function processJSONData(data) {
+  	//save in a variable array of degrees
+  	let degrees = data.my_college_degrees;
+  
+  	//div where we will output result table
     const dataDiv = document.getElementById("data");
-    dataDiv.innerhtml = "<h2>College Degrees:</h2><pre>" + JSON.stringify(data, null, 2) + "</pre>";
 
+    // Create a table element
+    const table = document.createElement("table");
 
+    // Create table headers
+  	//headers = ["school","program/major","type(AA,BA,BS,MS,etc.)","year conferred"]
+    const headers = Object.keys(data.my_college_degrees[0].degree);
+    const headerRow = document.createElement("tr");
 
+  	//loop through each element in headers variable to create the th tag for it
+    headers.forEach(headerText => {
+      	//create th and append to created headerRow variable
+        const header = document.createElement("th");
+        header.appendChild(document.createTextNode(headerText));
+        headerRow.appendChild(header);
+    });
+
+    table.appendChild(headerRow);
+  
+
+    // Populate table with data
+    data.forEach(degree => {
+        const row = document.createElement("tr");
+
+        headers.forEach(header => {
+            const cell = document.createElement("td");
+            cell.appendChild(document.createTextNode(degree.degree[header]));
+            row.appendChild(cell);
+        });
+
+        table.appendChild(row);
+    });
+
+    // Clear previous content and append the new table
+    dataDiv.innerHTML = "";
+    dataDiv.appendChild(table);
 }
