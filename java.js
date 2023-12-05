@@ -50,7 +50,7 @@ function processJSONData(data) {
   
 
     // Populate table with data
-    data.forEach(degree => {
+    degrees.forEach(degree => {
         const row = document.createElement("tr");
 
         headers.forEach(header => {
