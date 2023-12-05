@@ -19,4 +19,6 @@ function fetchData() {
 
 function processJSONData(data) {
     console.log('Processing data:', data);
+    document.write(data)
+
 }
