@@ -28,7 +28,7 @@ function processJSONData(data) {
   	let degrees = data.my_college_degrees;
   
   	//div where we will output result table
-    const dataDiv = document.getElementById("degrees.forEach");
+    let dataDiv = document.getElementById("data");
 
     // Create a table element
     const table = document.createElement("table");
@@ -63,6 +63,7 @@ function processJSONData(data) {
     });
 
     // Clear previous content and append the new table
+  console.log(dataDiv)
     dataDiv.innerHTML = "";
     dataDiv.appendChild(table);
 }
