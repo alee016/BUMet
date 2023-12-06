@@ -16,19 +16,16 @@ function fetchData() {
             alert("Error " + error);
             console.error('Error:', error);
         });
-
 }
 
-
-
 function processJSONData(data) {
-  	let degrees = data.my_college_degrees;
-  
+    let degrees = data.my_college_degrees;
+
     let dataDiv = document.getElementById("data");
 
     const table = document.createElement("table");
 
-    const headers = Object.keys(data.my_college_degrees[0].degree);
+    const headers = ["School", "Program/Major", "Type", "Year"];
     const headerRow = document.createElement("tr");
 
     headers.forEach(headerText => {
@@ -38,21 +35,20 @@ function processJSONData(data) {
     });
 
     table.appendChild(headerRow);
-  
 
     degrees.forEach(degree => {
         const row = document.createElement("tr");
 
         headers.forEach(header => {
             const cell = document.createElement("td");
-            cell.appendChild(document.createTextNode(degree.degree[header]));
+            const cellValue = degree.degree[header.toLowerCase()];
+            cell.appendChild(document.createTextNode(cellValue));
             row.appendChild(cell);
         });
 
         table.appendChild(row);
     });
 
-  console.log(dataDiv)
     dataDiv.innerHTML = "";
     dataDiv.appendChild(table);
 }
