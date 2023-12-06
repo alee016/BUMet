@@ -16,6 +16,7 @@ function fetchData() {
             alert("Error " + error);
             console.error('Error:', error);
         });
+
 }
 
 function processJSONData(data) {
@@ -41,7 +42,8 @@ function processJSONData(data) {
 
         headers.forEach(header => {
             const cell = document.createElement("td");
-            const cellValue = degree.degree[header.toLowerCase()];
+            const key = header === "Type" ? "type(AA,BA,BS,MS,etc.)" : (header === "Year" ? "year conferred" : header.replace(/\s+/g, '_').toLowerCase());
+            const cellValue = degree.degree[key];
             cell.appendChild(document.createTextNode(cellValue));
             row.appendChild(cell);
         });
